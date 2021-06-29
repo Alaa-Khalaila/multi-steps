@@ -1,0 +1,348 @@
+<div class="row">
+  <div class="col-xl-10">
+    <div class="row g-2">
+      <div
+        *ngFor="let section of sections"
+        [ngClass]="{ active: section.id == step }"
+        class="fs-5 p-2  text-center col-{{ 12 / sections.length }}"
+      >
+        {{ section.name }}
+      </div>
+    </div>
+
+    <form class="p-3" [formGroup]="form" (ngSubmit)="submit()" needs-validation>
+      <div>
+        <div formGroupName="first" class="row g-2" *ngIf="step == 1">
+          <div class="col-6">
+            <label for="firstname" class="form-label">First Name</label>
+            <input
+              type="text"
+              id="firstname"
+              class="form-control {{ validationClass(first.firstname) }}"
+              formControlName="firstname"
+            />
+            <div *ngIf="first.firstname?.pending">Please wait...</div>
+            <div class="invalid-feedback">
+              <app-validation
+                [input]="first.firstname"
+                text="First name"
+                [nextClick]="nextClick"
+              ></app-validation>
+            </div>
+          </div>
+          <div class="col-6">
+            <label for="lastname" class="form-label">Last Name</label>
+            <input
+              type="text"
+              id="lasttname"
+              class="form-control {{ validationClass(first.lastname) }}"
+              formControlName="lastname"
+            />
+            <div class="invalid-feedback">
+              <app-validation
+                [input]="first.lastname"
+                text="Last name"
+                [nextClick]="nextClick"
+              ></app-validation>
+            </div>
+          </div>
+          <div>
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="text"
+              id="email"
+              class="form-control {{ validationClass(first.email) }}"
+              formControlName="email"
+            />
+            <div class="invalid-feedback">
+              <app-validation
+                [input]="first.email"
+                text="Email"
+                [nextClick]="nextClick"
+              ></app-validation>
+            </div>
+          </div>
+          <div>
+            <label for="phone" class="form-label">Phone</label>
+            <input
+              type="number"
+              id="phone"
+              class="form-control {{ validationClass(first.phone) }}"
+              formControlName="phone"
+            />
+            <div class="invalid-feedback">
+              <app-validation
+                [input]="first.phone"
+                text="Phone"
+                [nextClick]="nextClick"
+              ></app-validation>
+            </div>
+          </div>
+          <div class="col-4">
+            <label for="zipcode" class="form-label">Zip Code</label>
+            <input
+              type="text"
+              id="zipcode"
+              class="form-control {{ validationClass(first.zipcode) }}"
+              formControlName="zipcode"
+            />
+            <div class="invalid-feedback">
+              <app-validation
+                [input]="first.zipcode"
+                text="Zip code"
+                [nextClick]="nextClick"
+              ></app-validation>
+            </div>
+          </div>
+          <div class="col-8">
+            <label for="state" class="form-label">State</label>
+            <select
+              class="form-select"
+              formControlName="state"
+              aria-label="Default select example"
+            >
+              <option *ngFor="let state of states" value="{{ state.name }}">
+                {{ state.name }}
+              </option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label col-12" for="country">Country</label>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label" for="amman"> Amman </label>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="countries"
+                value="Amman"
+                id="amman"
+                formControlName="countries"
+              />
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label" for="zarqa"> Zarqa </label>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="countries"
+                value="Zarqa"
+                id="zarqa"
+                formControlName="countries"
+              />
+            </div>
+          </div>
+        </div>
+        <div formGroupName="second" class="row g-2" *ngIf="step == 2">
+          <div>
+            <label for="product" class="form-label">Product</label>
+            <input
+              type="text"
+              id="product"
+              class="form-control {{ validationClass(second.product) }}"
+              formControlName="product"
+            />
+            <div class="invalid-feedback">
+              <app-validation
+                [input]="second.product"
+                text="Product"
+                [nextClick]="nextClick"
+              ></app-validation>
+            </div>
+          </div>
+          <div>
+            <label for="type" class="form-label">Type</label>
+            <input
+              type="text"
+              id="type"
+              class="form-control {{ validationClass(second.type) }}"
+              formControlName="type"
+            />
+            <div class="invalid-feedback">
+              <app-validation
+                [input]="second.type"
+                text="Type"
+                [nextClick]="nextClick"
+              ></app-validation>
+            </div>
+          </div>
+          <div>
+            <label for="description" class="form-label">Description</label>
+            <input
+              type="text"
+              id="description"
+              class="form-control {{ validationClass(second.description) }}"
+              formControlName="description"
+            />
+            <div class="invalid-feedback">
+              <app-validation
+                [input]="second.description"
+                text="Description"
+                [nextClick]="nextClick"
+              ></app-validation>
+            </div>
+          </div>
+          <div>
+            <label for="year" class="form-label">Year</label>
+            <input
+              type="number"
+              id="year"
+              class="form-control {{ validationClass(second.year) }}"
+              formControlName="year"
+            />
+            <div class="invalid-feedback">
+              <app-validation
+                [input]="second.year"
+                text="Year"
+                [nextClick]="nextClick"
+              ></app-validation>
+            </div>
+          </div>
+          <div>
+            <label for="day" class="form-label">Day</label>
+            <input
+              type="number"
+              id="day"
+              class="form-control {{ validationClass(second.day) }}"
+              formControlName="day"
+            />
+            <div class="invalid-feedback">
+              <app-validation
+                [input]="second.day"
+                text="Day"
+                [nextClick]="nextClick"
+              ></app-validation>
+            </div>
+          </div>
+        </div>
+        <div class="row g-2" *ngIf="step == 3">
+          <div class="col-6">
+            <label for="firstname" class="form-label">First Name</label>
+            <input type="text" id="firstname" class="form-control" />
+          </div>
+          <div class="col-6">
+            <label for="lastname" class="form-label">Last Name</label>
+            <input type="text" id="lasttname" class="form-control" />
+          </div>
+          <div>
+            <label for="email" class="form-label">Email</label>
+            <input type="text" id="email" class="form-control" />
+          </div>
+          <div>
+            <label for="phone" class="form-label">Phone</label>
+            <input type="number" id="phone" class="form-control" />
+          </div>
+          <div class="col-4">
+            <label for="zibcode" class="form-label">Zip Code</label>
+            <input type="text" id="zibcode" class="form-control" />
+          </div>
+          <div class="col-8">
+            <label for="state" class="form-label">State</label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Select state</option>
+              <option *ngFor="let state of states" value="{{ state.value }}">
+                {{ state.name }}
+              </option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label col-12" for="country">Country</label>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="countries"
+                id="amman"
+              />
+              <label class="form-check-label" for="amman"> Amman </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="countries"
+                id="zarqa"
+              />
+              <label class="form-check-label" for="zarqa"> Zarqa </label>
+            </div>
+          </div>
+        </div>
+        <div class="row g-2" *ngIf="step == 4">
+          <div class="col-6">
+            <label for="firstname" class="form-label">First Name</label>
+            <input type="text" id="firstname" class="form-control" />
+          </div>
+          <div class="col-6">
+            <label for="lastname" class="form-label">Last Name</label>
+            <input type="text" id="lasttname" class="form-control" />
+          </div>
+          <div>
+            <label for="email" class="form-label">Email</label>
+            <input type="text" id="email" class="form-control" />
+          </div>
+          <div>
+            <label for="phone" class="form-label">Phone</label>
+            <input type="number" id="phone" class="form-control" />
+          </div>
+          <div class="col-4">
+            <label for="zibcode" class="form-label">Zip Code</label>
+            <input type="text" id="zibcode" class="form-control" />
+          </div>
+          <div class="col-8">
+            <label for="state" class="form-label">State</label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Select state</option>
+              <option *ngFor="let state of states" value="{{ state.value }}">
+                {{ state.name }}
+              </option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label col-12" for="country">Country</label>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="countries"
+                id="amman"
+              />
+              <label class="form-check-label" for="amman"> Amman </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="countries"
+                id="zarqa"
+              />
+              <label class="form-check-label" for="zarqa"> Zarqa </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4">
+        <app-button
+          btnClass="btn btn-primary me-2 "
+          text="Back"
+          (btnClick)="onBack()"
+          [disabled]="step == 1"
+          type="button"
+        ></app-button>
+        <app-button
+          btnClass="btn btn-primary me-2"
+          text="Next"
+          (btnClick)="onNext()"
+          [ngClass]="{ none: step == 4 }"
+          type="button"
+        ></app-button>
+        <app-button
+          btnClass="btn btn-primary "
+          text="Submit"
+          *ngIf="step == 4"
+          type="submit"
+        ></app-button>
+        {{ cart$ | async }}
+      </div>
+    </form>
+  </div>
+  <app-summary [form]="form" class="col-xl-2"></app-summary>
+</div>

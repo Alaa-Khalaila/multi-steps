@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+:root {
+  --color-primary: #3fb5c7;
+  --color-secondary: #217a88;
+  --color-accent: #c7e106;
+}
+
+.active {
+  border-bottom: 3px solid var(--color-accent);
+  background-color: whitesmoke;
+}
+
+/** Background **/
+.bg--secondary {
+  background-color: var(--color-secondary);
+}
+
+.bg--primary {
+  background-color: var(--color-primary);
+}
+
+/** Border */
+.border--secondary {
+  border-bottom: 1px solid var(--color-secondary);
+}
+
+/** Nav **/
+.nav {
+  background-color: rgb(223, 242, 246);
+}
+
+/** Display **/
+.none {
+  display: none;
+}
+
+/** Span **/
+.span--primary {
+  color: rgb(206, 201, 201);
+  display: block;
+}

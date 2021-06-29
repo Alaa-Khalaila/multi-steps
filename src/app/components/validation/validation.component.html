@@ -1,0 +1,14 @@
+<div *ngIf="input?.invalid && (input?.touched || nextClick)">
+  <div>
+    <div *ngIf="input?.errors?.required">{{ text }} is required.</div>
+    <div *ngIf="input?.errors?.minlength">
+      {{ text }} must be more than
+      {{ input?.errors?.minlength.requiredLength }}
+      characters.
+    </div>
+    <div *ngIf="input?.errors?.cannotContainSpace">
+      {{ text }} can't contain space.
+    </div>
+    <div *ngIf="input?.errors?.shouldBeUnique">Username is already used</div>
+  </div>
+</div>
